@@ -1,0 +1,206 @@
+$engine: 3
+$onesync: on
+name: QRCore Remastered
+version: 1.0.0
+author: The Community
+description: A RedM core with a load of bloat.
+
+tasks:
+  #  Download Base Files
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/txAdminRecipe
+    ref: main
+    dest: ./tmp/QRCore
+
+  - action: move_path
+    src: ./tmp/QRCore/server.cfg
+    dest: ./server.cfg
+
+  - action: move_path
+    src: ./tmp/QRCore/permissions.cfg
+    dest: ./permissions.cfg
+
+  - action: move_path
+    src: ./tmp/QRCore/myLogo.png
+    dest: ./myLogo.png
+
+  # Prepare Database
+  - action: connect_database
+  - action: query_database
+    file: ./tmp/QRCore/qrcore.sql
+
+
+  # Downloading Standalone Resources
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: resources
+    dest: ./resources/[cfx-default]
+
+  - action: download_file
+    path: ./tmp/files/oxmysql.zip
+    url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
+  - action: unzip
+    dest: ./resources/[ox]
+    src: ./tmp/files/oxmysql.zip
+
+  - action: download_file
+    path: ./tmp/files/ox_lib.zip
+    url: https://github.com/overextended/ox_lib/releases/latest/download/ox_lib.zip
+  - action: unzip
+    dest: ./resources/[ox]
+    src: ./tmp/files/ox_lib.zip
+
+  - action: download_github
+    dest: ./resources/[standalone]/connectqueue
+    ref: main
+    src: https://github.com/QRCore-RedM-Re/connectqueue
+
+  - action: download_github
+    dest: ./resources/[standalone]/progressbar
+    ref: main
+    src: https://github.com/QRCore-RedM-Re/progressbar
+
+  - action: download_github
+    dest: ./resources/[standalone]/safecracker
+    ref: main
+    src: https://github.com/QRCore-RedM-Re/safecracker
+
+  - action: download_github
+    dest: ./resources/[standalone]/PolyZone
+    ref: main
+    src: https://github.com/QRCore-RedM-Re/PolyZone
+
+  - action: download_github
+    dest: ./resources/[standalone]/pma-voice
+    ref: main
+    src: https://github.com/AvarianKnight/pma-voice
+
+  - action: download_github
+    dest: ./resources/[standalone]/mediccamp
+    ref: main
+    src: https://github.com/QRCore-RedM-Re/mediccamp
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr_menu
+    ref: main
+    dest: ./resources/[standalone]/qr_menu
+
+  # Download QRCore resources
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-admin
+    ref: main
+    dest: ./resources/[qr]/qr-admin
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-appearance
+    ref: main
+    dest: ./resources/[qr]/qr-appearance
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-clothes
+    ref: main
+    dest: ./resources/[qr]/qr-clothes
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-ambulancejob
+    ref: main
+    dest: ./resources/[qr]/qr-ambulancejob
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-banking
+    ref: main
+    dest: ./resources/[qr]/qr-banking
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-core
+    ref: main
+    dest: ./resources/[qr]/qr-core
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-consumables
+    ref: main
+    dest: ./resources/[qr]/qr-consumables
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-doorlock
+    ref: main
+    dest: ./resources/[qr]/qr-doorlock
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-hud
+    ref: main
+    dest: ./resources/[qr]/qr-hud
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-interiors
+    ref: main
+    dest: ./resources/[qr]/qr-interiors
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-inventory
+    ref: main
+    dest: ./resources/[qr]/qr-inventory
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-lockpick
+    ref: main
+    dest: ./resources/[qr]/qr-lockpick
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-management
+    ref: main
+    dest: ./resources/[qr]/qr-management
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-multicharacter
+    ref: main
+    dest: ./resources/[qr]/qr-multicharacter
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-policejob
+    ref: main
+    dest: ./resources/[qr]/qr-policejob
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-scoreboard
+    ref: main
+    dest: ./resources/[qr]/qr-scoreboard
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-shops
+    ref: main
+    dest: ./resources/[qr]/qr-shops
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-smallresources
+    ref: main
+    dest: ./resources/[qr]/qr-smallresources
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-spawn
+    ref: main
+    dest: ./resources/[qr]/qr-spawn
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-stables
+    ref: main
+    dest: ./resources/[qr]/qr-stables
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-weapons
+    ref: main
+    dest: ./resources/[qr]/qr-weapons
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-weathersync
+    ref: main
+    dest: ./resources/[qr]/qr-weathersync
+
+  - action: download_github
+    src: https://github.com/QRCore-RedM-Re/qr-target
+    ref: main
+    dest: ./resources/[qr]/qr-target
+
+  # Clean up
+  - action: remove_path
+    path: ./tmp
